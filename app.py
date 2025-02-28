@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify
 
 app = Flask(__name__)
 
@@ -10,13 +10,8 @@ def home():
 def status():
     return jsonify({"status": "API is running!"})
 
-# ✅ New POST endpoint to receive data
-@app.route('/echo', methods=['POST'])
-def echo():
-    data = request.get_json()  # Get JSON data from request
-    if not data:
-        return jsonify({"error": "No data received"}), 400
-    return jsonify({"received": data})  # Return received data
-
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
+    
+    
+    
